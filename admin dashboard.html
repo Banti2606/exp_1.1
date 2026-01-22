@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Admin Dashboard</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+:root {
+  --bg: #f4f6f8;
+  --card: #ffffff;
+  --text: #222;
+  --primary: #4f46e5;
+}
+
+.dark {
+  --bg: #121212;
+  --card: #1e1e1e;
+  --text: #ffffff;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Arial, sans-serif;
+}
+
+/* GRID */
+.dashboard {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  height: 100vh;
+}
+
+/* SIDEBAR */
+aside {
+  background: var(--primary);
+  color: white;
+  padding: 20px;
+}
+
+/* CONTENT */
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+/* HEADER */
+header {
+  background: var(--card);
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* MAIN */
+main {
+  padding: 20px;
+}
+
+/* BUTTON */
+button {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* RESPONSIVE */
+@media (max-width: 700px) {
+  aside { display: none; }
+  .dashboard { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="dashboard">
+
+  <aside>
+    <h3>Admin</h3>
+    <p>Dashboard</p>
+    <p>Users</p>
+    <p>Settings</p>
+  </aside>
+
+  <div class="content">
+    <header>
+      <h2>Admin Dashboard</h2>
+      <button onclick="toggleTheme()">Toggle Theme</button>
+    </header>
+
+    <main>
+      <p>Welcome to admin panel.</p>
+    </main>
+  </div>
+
+</div>
+
+<script>
+  // Load saved theme
+  if (localStorage.getItem("theme") === "dark") {
+    document.body.classList.add("dark");
+  }
+
+  // Toggle theme
+  function toggleTheme() {
+    document.body.classList.toggle("dark");
+    localStorage.setItem(
+      "theme",
+      document.body.classList.contains("dark") ? "dark" : "light"
+    );
+  }
+</script>
+
+</body>
+</html>
